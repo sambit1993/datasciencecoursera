@@ -1,4 +1,17 @@
+##This file should be present inside UCI HAR Dataset directory
+##UCI HAR Dataset
+## |-test
+## |-train
+## |-activity_labels.txt
+## |-features.txt
+## |-features_info.txt
+## |-README.txt
+## |-run_analysis.R
 
+## To use this script call the function main as
+## X<-main()
+## X can be any name and it will be a vector of two data frames (X[1]:contains the answer to part 4,X[2]:contains the answer to part 5)
+## The averages(as Required in Part 5) will be written in "output.txt" and is stored as aggregateData in main
 
 activity_names<- c("walking","WALKING_UPSTAIRS","WALKING_DOWNSTAIRS","SITTING", "STANDING","LAYING")
 
@@ -78,6 +91,7 @@ find_stat<-function(x){
 
 ##Main function, calls the helper functions and completes all the tasks
 ##Additionally does part 3,4 of the excercise
+##Returns vector of (merged data,aggregate data) 
 main<-function(){
     ##Loading Data
     data<-loadData()
@@ -92,7 +106,7 @@ main<-function(){
     ##Writing the first data frame to file
     write.table(aggregateData,file="output.txt",sep=" ",row.names=F)   
     
-    ##Returns the data frame after performing Part 1,2,3,4 in the course project
+    ##Returns the vector of data frames (merged data,aggregate data) after performing Part 1,2,3,4,5 in the course project
     ##It can be used for verification
-    data
+    c(data,aggregateData)
 }
