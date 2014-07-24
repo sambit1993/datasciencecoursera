@@ -1,4 +1,5 @@
 ##This file should be present inside UCI HAR Dataset directory
+## For example a sample directory tree is given
 ##UCI HAR Dataset
 ## |-test
 ## |-train
