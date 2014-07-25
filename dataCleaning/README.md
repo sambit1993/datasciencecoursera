@@ -17,23 +17,23 @@
 
     sample usage:
 
-        `X<-main()`
+        ```X<-main()```
     
     X will be a list containing two dataframes(`X[[1]]` and `X[[2]]`) with
-    `X[[1]]`: answer to part 4
-    `X[[2]]`: answer to part 5 
+    ```X[[1]]``` : answer to part 4
+    ````X[[2]]``` : answer to part 5 
 ##Functions
    `main()`-        It is the main function. It call all the helper functions and additionally does part 3,4 of 
                     the excercise.It returns a list of two dataframes
    
-   `find_stat()'-   It calculates the average for each of the columns and stores the result as a new data frame.
+   `find_stat()` -  It calculates the average for each of the columns and stores the result as a new data frame.
                     Further it gives meaningful column names to the new data frame. It returns the the new data
                     frame it created.
 
-   `mygsub()'-      Variant of `gsub()` . It is used to apply `gsub()` operation for multiple pattens and replacement.
+   `mygsub()` -     Variant of `gsub()` . It is used to apply `gsub()` operation for multiple pattens and replacement.
                     Usage is documented in the inline comments.
 
-   `loadData()'-    This function loads all the required data. Then it extracts only the mean and standard deviation part 
+   `loadData()` -   This function loads all the required data. Then it extracts only the mean and standard deviation part 
                     of the data. It also loads all the subject id and activity names and correctly associates it with
                     each row of data. Finally the data from test and train is combined and the resulting data frame is 
                     returned.
