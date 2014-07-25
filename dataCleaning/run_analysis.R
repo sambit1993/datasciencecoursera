@@ -1,17 +1,12 @@
-##This file should be present inside UCI HAR Dataset directory
+##This file should be present at the same level as UCI HAR Dataset directory
 ## For example a sample directory tree is given
-##UCI HAR Dataset
-## |-test
-## |-train
-## |-activity_labels.txt
-## |-features.txt
-## |-features_info.txt
-## |-README.txt
+##(top-level)
+## |-UCI HAR Dataset
 ## |-run_analysis.R
 
 ## To use this script call the function main as
 ## X<-main()
-## X can be any name and it will be a vector of two data frames (X[1]:contains the answer to part 4,X[2]:contains the answer to part 5)
+## X can be any name and it will be a list of two data frames (X[[1]]:contains the answer to part 4,X[[2]]:contains the answer to part 5)
 ## The averages(as Required in Part 5) will be written in "output.txt" and is stored as aggregateData in main
 
 activity_names<- c("walking","WALKING_UPSTAIRS","WALKING_DOWNSTAIRS","SITTING", "STANDING","LAYING")
@@ -25,25 +20,25 @@ activity_names<-gsub("_[a-z]","\\U",tolower(activity_names))
 loadData<-function(){
     
     ##Reading train data
-    trainData<-read.table("train/X_train.txt",sep="")
-    trainDataPerson<-read.table("train/subject_train.txt",sep="")
-    trainActivity<-read.table("train/y_train.txt",sep="")
+    trainData<-read.table("UCI HAR Dataset/train/X_train.txt",sep="")
+    trainDataPerson<-read.table("UCI HAR Dataset/train/subject_train.txt",sep="")
+    trainActivity<-read.table("UCI HAR Dataset/train/y_train.txt",sep="")
     ##Labeling the first two columns
     names(trainDataPerson)<-c("Person")
     names(trainActivity)<-c("Activity")
     trainActivity<-lapply(trainActivity,function(x){ activity_names[x]})
     
     ##Reading test data
-    testData<-read.table("test/X_test.txt",sep="")
-    testDataPerson<-read.table("test/subject_test.txt",sep="")
-    testActivity<-read.table("test/y_test.txt",sep="")
+    testData<-read.table("UCI HAR Dataset/test/X_test.txt",sep="")
+    testDataPerson<-read.table("UCI HAR Dataset/test/subject_test.txt",sep="")
+    testActivity<-read.table("UCI HAR Dataset/test/y_test.txt",sep="")
     ##Labelling the first two columns
     names(testDataPerson)<-c("Person")
     names(testActivity)<-c("Activity")
     testActivity<-lapply(testActivity,function(x){ activity_names[x]})
     
     ##Reading common data
-    featureNames<-read.table("features.txt")
+    featureNames<-read.table("UCI HAR Dataset/features.txt")
     
     ##Labeling features
     names(trainData)<-featureNames[,2]
@@ -92,7 +87,7 @@ find_stat<-function(x){
 
 ##Main function, calls the helper functions and completes all the tasks
 ##Additionally does part 3,4 of the excercise
-##Returns vector of (merged data,aggregate data) 
+##Returns list of (merged data,aggregate data) 
 main<-function(){
     ##Loading Data
     data<-loadData()
@@ -107,7 +102,7 @@ main<-function(){
     ##Writing the first data frame to file
     write.table(aggregateData,file="output.txt",sep=" ",row.names=F)   
     
-    ##Returns the vector of data frames (merged data,aggregate data) after performing Part 1,2,3,4,5 in the course project
+    ##Returns the list of data frames (merged data,aggregate data) after performing Part 1,2,3,4,5 in the course project
     ##It can be used for verification
-    c(data,aggregateData)
+    list(data,aggregateData)
 }
