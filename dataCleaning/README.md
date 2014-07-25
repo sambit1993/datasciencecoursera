@@ -1,9 +1,12 @@
 ##Introduction
+    
     This script loads the training data and testing data and meeges them. Further it extracts only
     the mean and standard deviation of reading present in the orignal dataset as -mean() and -std() 
     respectively. Attempt has been made to make the column names as meaningful as possible.
     Further it averages each of the reading per person per activity and outputs the result as "output.txt"
+
 ##Usage Instructions
+    
     This script must be present at the same level as the "UCI HAR Dataset" directory.For example:
         (top-level)
             |-UCI HAR Dataset
@@ -20,9 +23,11 @@
         ```X<-main()```
     
     X will be a list containing two dataframes(`X[[1]]` and `X[[2]]`) with
-    ```X[[1]]``` : answer to part 4
-    ````X[[2]]``` : answer to part 5 
+    X[[1]] : answer to part 4
+    X[[2]] : answer to part 5 
+
 ##Functions
+
    `main()`-        It is the main function. It call all the helper functions and additionally does part 3,4 of 
                     the excercise.It returns a list of two dataframes
    
